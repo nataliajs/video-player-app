@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './styles/index.scss'
+import React from "react"
+import ReactDOM from "react-dom"
+import "./styles/index.scss"
 
-import App from './app'
+import App from "./app"
 
 ReactDOM.render(
   <App />,
