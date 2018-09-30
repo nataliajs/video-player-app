@@ -33,13 +33,12 @@ module.exports = {
     }
   },
   devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': 'http://127.0.0.1:8080' ,
-      "Access-Control-Allow-Methods": "OPTIONS",
-    },
     contentBase: "./dist",
     port: 8080,
     host: "127.0.0.1",
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/graphql': 'http://localhost:3000'
+    }
   }
 }
