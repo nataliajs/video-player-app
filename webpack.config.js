@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-module.exports = {
+module.exports = {  
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -29,7 +29,9 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      components: path.join(__dirname, 'src', 'components')
+      components: path.join(__dirname, 'src', 'components'),
+      actions: path.join(__dirname, 'src', 'actions'),
+      store: path.join(__dirname, 'src', 'store.js')
     }
   },
   devServer: {

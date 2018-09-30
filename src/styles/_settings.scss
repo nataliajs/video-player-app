@@ -1,0 +1,86 @@
+
+$ff_heading: 'Fira Sans', sans-serif;
+$ff_body: 'Open Sans', sans-serif;
+
+/**
+* FONT SIZES 
+**/
+$s_small: 16px;
+$s_medium: 24px;
+$s_large: 28px;
+
+/**
+* LINE HEIGHT 
+**/
+$lh_small: 26px;
+$lh_medium: 34px;
+$lh_large: 38px;
+
+/**
+* FONT WEIGHTS 
+**/ 
+$fw_regular: 400;
+$fw-bold: 700;
+$fw_extra-bold: 900;
+
+/**
+* COLORS 
+**/
+$c_base: rgb(12, 11, 11);
+$c_inverse: #fffffa;
+//cool-color: #74E4D7
+$c_main: #67aa95;
+$c_main_dark: darken($c_main, 10%);
+
+$c_secondary: #f79256;
+
+$c_action: #f79256;
+$c_danger: #ff0000d5;
+
+$c_font: $c_base;
+
+/**
+* BORDERS
+**/
+$border-medium: 6px solid $c_base;
+$border-large: 10px solid $c_base;
+
+/**
+ * MARGINS
+**/
+$m_small: 8px;
+$m_medium: 16px;
+$m_large: 32px;
+
+
+/*
+*
+* FONT MIXINS
+*
+*/
+
+@mixin body {
+  font-family: $ff_body;
+  color: $c_font;
+  font-size: $s_small;
+  line-height: $lh_small;
+  font-weight: $fw_regular;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin heading($style: bold) {
+  font-size: $s_large;
+  line-height: $lh_medium;
+  @if $style == 'bold' {
+    font-family: $ff_heading;
+  }
+  margin-bottom: $m_large;
+  margin-top: $m_medium;
+  color: $c_font;
+  font-weight: $fw_extra-bold;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+

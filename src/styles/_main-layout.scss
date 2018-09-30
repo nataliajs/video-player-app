@@ -1,0 +1,20 @@
+body{
+  margin: 0;
+  @include body;
+  background: $c_inverse;
+}
+
+.main-layout{
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: $m_large*2;
+  border: $border-large; 
+  /*background: repeating-linear-gradient(
+      45deg,
+      $c_base,
+      $c_base 1px,
+      $c_inverse 1px,
+      $c_inverse 5px
+    ); */
+}
