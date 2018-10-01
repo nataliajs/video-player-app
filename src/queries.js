@@ -10,7 +10,7 @@ const movies_query = `
     }
   `
 const movie_query = `
-  query movie($id: Int!) {
+  query movie($id: String!) {
     movie(id: $id) {
       id
       manifest
@@ -40,7 +40,7 @@ export function getMovie( id ){
     axios.post("/graphql",
       { 
         query: movie_query,
-        variables: id
+        variables: { id: id }
       }
     )
     .then(result=>{

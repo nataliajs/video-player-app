@@ -31,7 +31,8 @@ module.exports = {
     alias: {
       components: path.join(__dirname, 'src', 'components'),
       actions: path.join(__dirname, 'src', 'actions'),
-      store: path.join(__dirname, 'src', 'store.js')
+      store: path.join(__dirname, 'src', 'store.js'),
+      utils: path.join(__dirname, 'src', 'utils'),
     }
   },
   devServer: {

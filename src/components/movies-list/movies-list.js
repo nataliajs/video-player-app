@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
+import { movieProps } from "utils/reused-proptypes"
 
 
 class MoviesList extends React.Component {
@@ -23,4 +25,7 @@ class MoviesList extends React.Component {
   }
 }
 
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(movieProps)
+}
 export default MoviesList

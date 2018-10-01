@@ -12,7 +12,6 @@ const MainLayout = () => (
     <main>
       <Switch>
         <Route path="/" exact component={MoviesListContainer} />
-        <Route path="/movie" exact component={MoviesListContainer} />
         <Route path="/movie/:movieId" component={MovieContainer} />
         <Redirect to="/" />
       </Switch>
