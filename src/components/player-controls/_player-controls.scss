@@ -1,0 +1,6 @@
+.PlayerControls{
+  border-top: $border-medium;
+  &__btn{
+    @include control-btn;
+  }
+}

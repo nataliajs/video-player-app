@@ -8,7 +8,7 @@ class MoviesList extends React.Component {
   render() {
     // iterate through movies list to render buttons-links
     const moviesList = this.props.movies.map((movie) =>
-      <li key={movie.id}>
+      <li key={movie.id} className="Movies-list__item">
         <Link to={`/movie/${movie.id}`}>
           {movie.name}
         </Link>
@@ -16,8 +16,8 @@ class MoviesList extends React.Component {
     );
 
     return(
-        <div>
-          <ul>
+        <div className="Movies">
+          <ul className="Movies-list">
             { moviesList }
           </ul>
         </div>
@@ -27,5 +27,8 @@ class MoviesList extends React.Component {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(movieProps)
+}
+MoviesList.defaultProps = {
+  movies: []
 }
 export default MoviesList

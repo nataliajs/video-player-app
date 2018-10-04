@@ -3,18 +3,57 @@ body{
   @include body;
   background: $c_inverse;
 }
+ul{
+  padding: 0;
+}
+a {
+  text-decoration: none;      
+  color: $c_font; 
+}
 
 .main-layout{
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
-  padding: $m_large*2;
-  border: $border-large; 
-  /*background: repeating-linear-gradient(
-      45deg,
-      $c_base,
-      $c_base 1px,
-      $c_inverse 1px,
-      $c_inverse 5px
-    ); */
+  height: 100vh;  
+  border: $border-large;
+  .Header{
+    height: 100px;
+    border-bottom: $border-large;  
+    display: flex;
+    &__first{
+      height: 100%;
+      width: 22%;
+      @media screen and (min-width: $beta_query) {
+        width: 21%;
+      }
+      background: $c_secondary;
+    }
+    &__content{
+      position: relative;
+      height: 100%;
+      width: 80%;
+      text-align: right;
+      &__text{
+        position: absolute;
+        bottom: $m_medium;
+        right: $m_medium;
+        @include heading;
+        margin-bottom: 0;
+      }
+    }
+  }
+  main{
+    margin-left: 20%;
+    padding: $m_medium $m_medium $m_medium $m_large;
+    @media screen and (min-width: $beta_query) {
+      padding: $m_large $m_large $m_large $m_large+20px;
+    }
+  }
+  &__vertical-col{
+    position: absolute;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    border-right: $border-large;
+  }
 }

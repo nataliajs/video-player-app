@@ -6,10 +6,14 @@ import MovieContainer from "components/movie/movie.container"
 
 const MainLayout = () => (
   <div className="main-layout">
-    <header>
-      Our video App
+    <header className="Header">
+      <span className="Header__first" />
+      <div className="Header__content">
+      <div className="Header__content__text">video app</div>
+      </div>
     </header>
-    <main>
+    <span className="main-layout__vertical-col" />
+    <main>      
       <Switch>
         <Route path="/" exact component={MoviesListContainer} />
         <Route path="/movie/:movieId" component={MovieContainer} />

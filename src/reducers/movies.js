@@ -1,5 +1,5 @@
-import { WAITING, LOADING, ERROR, SUCCESS } from './utils/network-states'
-import * as types from './actions/action-types'
+import { WAITING, LOADING, ERROR, SUCCESS } from '../utils/network-states'
+import * as types from '../actions/action-types'
 
 const initialState = {
   networkState: WAITING,

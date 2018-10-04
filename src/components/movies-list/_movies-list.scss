@@ -1,0 +1,21 @@
+.Movies{
+  &-list{
+    list-style: none;
+    &__item{
+      @include button;
+      a{
+        width: 100%;
+      }
+    }
+    width: 100%;
+    @media screen and (min-width: $beta_query) {
+      width: 80%;
+    }
+    @media screen and (min-width: $charlie_query) {
+      width: 50%;
+    }
+    @media screen and (min-width: $delta_query) {
+      width: 30%;
+    }
+  }
+}

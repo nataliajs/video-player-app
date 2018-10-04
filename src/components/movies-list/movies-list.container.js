@@ -30,10 +30,15 @@ MoviesListContainer.propTypes = {
   networkState: PropTypes.string
 }
 
+MoviesListContainer.defaultProps = {
+  movies: [],
+  networkState: ""
+}
+
 const mapStateToProps = function(_store) {
   return {
-    movies: _store.movies,
-    networkState: _store.networkState
+    movies: _store.moviesState.movies,
+    networkState: _store.moviesState.networkState
   }
 }
 export default connect(mapStateToProps)(MoviesListContainer)

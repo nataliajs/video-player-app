@@ -1,0 +1,23 @@
+@mixin button() {  
+  @include button-text;
+  cursor: pointer;
+  text-align: center; 
+  border: $border-medium;
+  margin: $m_medium;
+  padding: $m_medium;
+  &:hover{
+    background: $c_main;
+    font-weight: $fw_regular;
+  }
+}
+
+@mixin control-btn() {  
+  @include button-text;
+  cursor: pointer;
+  text-align: center; 
+  border-right: $border-medium;
+  padding: $m_medium;
+  &:hover{
+    background: $c_auxiliar;
+  }
+}

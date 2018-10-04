@@ -1,5 +1,5 @@
 import React from "react"
-import { movieProps } from "utils/reused-proptypes"
+import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
 
 import PlayerContainer from "components/player/player.container"
 
@@ -19,4 +19,9 @@ class Movie extends React.Component {
 Movie.propTypes = {
   movie: movieProps
 }
+
+Movie.defaultProps = {
+  movie: movieDefaultProps
+}
+
 export default Movie

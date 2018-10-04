@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import store from "store"
 import { getMovie } from "actions/movies-actions"
-import { movieProps } from "utils/reused-proptypes"
+import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
 import { WAITING, LOADING } from "utils/network-states"
 
 import Movie from "./movie"
@@ -30,10 +30,14 @@ MovieContainer.propTypes = {
   movie: movieProps
 }
 
+MovieContainer.defaultProps = {
+  movie: movieDefaultProps
+}
+
 const mapStateToProps = function(_store) {
   return {
-    movie: _store.currentMovie,
-    networkState: _store.networkState
+    movie: _store.moviesState.currentMovie,
+    networkState: _store.moviesState.networkState
   }
 }
 export default connect(mapStateToProps)(MovieContainer)
