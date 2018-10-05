@@ -18,6 +18,15 @@ class PlayerControlsContainer extends React.Component {
     store.dispatch(setIsCurrentTimeUpdated(true));
   }
 
+  _handleClickProgressBar = event =>{
+    const barElement = document.getElementById("video-progress-bar");
+    const clickRelativePosition = event.pageX - barElement.offsetLeft;
+    const playedRatio = clickRelativePosition / barElement.offsetWidth;
+    const newTimePosition = parseFloat((playedRatio*this.props.duration).toFixed(2));
+    store.dispatch(getPlayerCurrentTime(newTimePosition));
+    store.dispatch(setIsCurrentTimeUpdated(true));
+  }
+
   render() {
     const playedPercentage = getPercentage(this.props.currentTime, this.props.duration);
     return(
@@ -25,6 +34,7 @@ class PlayerControlsContainer extends React.Component {
           <PlayerControls 
             handleTogglePlay={this._handleTogglePlay}
             handleReload={this._handleReload}
+            handleClickProgressBar={this._handleClickProgressBar}
             isPlaying={this.props.isPlaying}
             percentage={playedPercentage}
           />

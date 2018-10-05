@@ -25,10 +25,13 @@ class PlayerControls extends React.Component {
 
   _renderProgressBar = ()=>{
     return(
-      <div className="PlayerControls__progress-bar">
+      <div id="video-progress-bar" onClick={this.props.handleClickProgressBar} className="PlayerControls__progress-bar">
         <div className="PlayerControls__progress-bar__fill" style={{ width: `${this.props.percentage}%` }} />
       </div>
     )
+  }
+  handleClick = e =>{
+    console.log("event", e.pageX);
   }
 
   render() {
@@ -45,6 +48,7 @@ class PlayerControls extends React.Component {
 PlayerControls.propTypes = {
   handleTogglePlay: PropTypes.func,
   handleReload: PropTypes.func,
+  handleClickProgressBar: PropTypes.func,
   percentage: PropTypes.number,
   isPlaying: PropTypes.bool
 }

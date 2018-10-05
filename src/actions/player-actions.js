@@ -41,7 +41,7 @@ export function setIsPlaying(isPlaying) {
   }
 }
 
-export function setIsCurrentTimeUpdated(isCurrentTimeUpdated) {
+export function setIsCurrentTimeUpdated(isCurrentTimeUpdated) {  
   return {
     type: types.SET_IS_CURRENT_TIME_UPDATED,
     isCurrentTimeUpdated

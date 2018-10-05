@@ -46,7 +46,6 @@ class PlayerContainer extends React.Component {
     // if current time has been updated through an input, we update currentTimeValue in video element
     // and clear isCurrentTimeUpdated in the store
     if(this.props.isCurrentTimeUpdated){
-      console.log("this.props.currentTime", this.props.currentTime);
       this.videoRef.current.currentTime = this.props.currentTime;
       store.dispatch(setIsCurrentTimeUpdated(false));
     }
@@ -101,7 +100,6 @@ class PlayerContainer extends React.Component {
             <Loading />: "" }
           <Player 
             ref={this.videoRef}
-            //currentTime={this.props.currentTime}
             onLoadedMetaData={this._loadedMetadata}
             onTimeUpdate={this._handleTimeUpdate}/>      
       </div>
@@ -113,8 +111,6 @@ PlayerContainer.propTypes = {
   networkState: PropTypes.string,
   src: PropTypes.string,
   currentTime: PropTypes.number,
-  //onLoadedMetaData: PropTypes.func, // used to get duration
-  //onTimeUpdate: PropTypes.func, // used to get current time
   isPlaying: PropTypes.bool
 }
 

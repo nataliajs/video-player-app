@@ -5,6 +5,7 @@
     @include control-btn;
   }
   &__progress-bar{
+    cursor: pointer;
     border-bottom: $border-medium;
     position: relative;
     height: 20px;
