@@ -34,9 +34,16 @@ export function getPlayerLoading() {
   }
 }
 
-export function setPlay(play) {
+export function setIsPlaying(isPlaying) {
   return {
-    type: types.SET_PLAY,
-    play
+    type: types.SET_IS_PLAYING,
+    isPlaying
+  }
+}
+
+export function setIsCurrentTimeUpdated(isCurrentTimeUpdated) {
+  return {
+    type: types.SET_IS_CURRENT_TIME_UPDATED,
+    isCurrentTimeUpdated
   }
 }

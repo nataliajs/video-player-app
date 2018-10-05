@@ -80,8 +80,7 @@ $max_width_content: 990px;
   @if $style == 'bold' {
     font-family: $ff_heading;
   }
-  margin-bottom: $m_large;
-  margin-top: $m_medium;
+  margin: $m_medium 0;
   color: $c_font;
   font-weight: $fw_extra-bold;
   -moz-osx-font-smoothing: grayscale;

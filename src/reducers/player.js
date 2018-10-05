@@ -6,7 +6,7 @@ const initialState = {
   networkError: null,
   duration: 0,
   currentTime: 0,
-  play: false
+  isCurrentTimeUpdated: false
 };
 
 export default function(state = initialState, action){
@@ -44,10 +44,17 @@ export default function(state = initialState, action){
         networkError: null,
       }
     
-    case types.SET_PLAY:
+    case types.SET_IS_PLAYING:
       return {
         ...state,
-        play: action.play,
+        isPlaying: action.isPlaying,
+      }
+
+    // we control time updates that come from input events
+    case types.SET_IS_CURRENT_TIME_UPDATED:
+      return {
+        ...state,
+        isCurrentTimeUpdated: action.isCurrentTimeUpdated,
       }
 
     default:

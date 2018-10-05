@@ -3,7 +3,7 @@ import shaka from 'shaka-player'
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import store from "store"
-import { getPlayerCurrentTime, getPlayerDuration, getPlayerSuccess, getPlayerLoading } from "actions/player-actions"
+import { getPlayerCurrentTime, getPlayerDuration, getPlayerSuccess, getPlayerLoading, setIsCurrentTimeUpdated } from "actions/player-actions"
 import { WAITING, LOADING } from "utils/network-states"
 
 import Player from "./player"
@@ -35,13 +35,20 @@ class PlayerContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // if play value has changed and is true, play video
-    if(this.props.play !== prevProps.play && this.props.play){
+    // if isPlaying value has changed and is true, play video
+    if(this.props.isPlaying !== prevProps.isPlaying && this.props.isPlaying){
       this.videoRef.current.play();
     }
-    // if play value has changed and is false, pause video
-    if(this.props.play !== prevProps.play && !this.props.play){
+    // if isPlaying value has changed and is false, pause video
+    if(this.props.isPlaying !== prevProps.isPlaying && !this.props.isPlaying){
       this.videoRef.current.pause();
+    }
+    // if current time has been updated through an input, we update currentTimeValue in video element
+    // and clear isCurrentTimeUpdated in the store
+    if(this.props.isCurrentTimeUpdated){
+      console.log("this.props.currentTime", this.props.currentTime);
+      this.videoRef.current.currentTime = this.props.currentTime;
+      store.dispatch(setIsCurrentTimeUpdated(false));
     }
   }
 
@@ -94,6 +101,7 @@ class PlayerContainer extends React.Component {
             <Loading />: "" }
           <Player 
             ref={this.videoRef}
+            //currentTime={this.props.currentTime}
             onLoadedMetaData={this._loadedMetadata}
             onTimeUpdate={this._handleTimeUpdate}/>      
       </div>
@@ -104,10 +112,10 @@ class PlayerContainer extends React.Component {
 PlayerContainer.propTypes = {
   networkState: PropTypes.string,
   src: PropTypes.string,
-  //currentTime: PropTypes.number,
+  currentTime: PropTypes.number,
   //onLoadedMetaData: PropTypes.func, // used to get duration
   //onTimeUpdate: PropTypes.func, // used to get current time
-  play: PropTypes.bool
+  isPlaying: PropTypes.bool
 }
 
 PlayerContainer.defaultProps = {
@@ -118,7 +126,9 @@ const mapStateToProps = function(_store) {
   return {
     src: _store.moviesState.currentMovie.manifest,
     networkState: _store.playerState.networkState,
-    play: _store.playerState.play
+    isPlaying: _store.playerState.isPlaying,
+    currentTime: _store.playerState.currentTime,
+    isCurrentTimeUpdated: _store.playerState.isCurrentTimeUpdated,
   }
 }
 export default connect(mapStateToProps)(PlayerContainer)

@@ -7,7 +7,7 @@ class PlayerControls extends React.Component {
   _renderPlayButton = ()=>{
     return(
       <button type="button" onClick={this.props.handleTogglePlay} className="PlayerControls__btn">
-        {this.props.play? 
+        {this.props.isPlaying? 
           <FontAwesomeIcon icon={faPause} />
           :<FontAwesomeIcon icon={faPlay} />
         } 
@@ -44,8 +44,9 @@ class PlayerControls extends React.Component {
 
 PlayerControls.propTypes = {
   handleTogglePlay: PropTypes.func,
+  handleReload: PropTypes.func,
   percentage: PropTypes.number,
-  play: PropTypes.bool
+  isPlaying: PropTypes.bool
 }
 
 export default PlayerControls
