@@ -16,7 +16,7 @@
   cursor: pointer;
   text-align: center; 
   border-right: $border-medium;
-  padding: $m_medium;
+  padding: $m_medium $m_large;
   &:hover{
     background: $c_auxiliar;
   }

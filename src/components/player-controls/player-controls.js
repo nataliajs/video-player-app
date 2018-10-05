@@ -1,14 +1,28 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
 
 class PlayerControls extends React.Component {
-  _renderButton = (type)=>{
+  _renderPlayButton = ()=>{
     return(
       <button type="button" onClick={this.props.handleTogglePlay} className="PlayerControls__btn">
-        {this.props.play? "pause": "play"} 
+        {this.props.play? 
+          <FontAwesomeIcon icon={faPause} />
+          :<FontAwesomeIcon icon={faPlay} />
+        } 
       </button>
     )
   }
+
+  _renderReloadButton = ()=>{
+    return(
+      <button type="button" onClick={this.props.handleReload} className="PlayerControls__btn">
+        <FontAwesomeIcon icon={faRedoAlt} />
+      </button>
+    )
+  }
+
   _renderProgressBar = ()=>{
     return(
       <div className="PlayerControls__progress-bar">
@@ -20,7 +34,9 @@ class PlayerControls extends React.Component {
   render() {
     return(
         <div className="PlayerControls">
-          { this._renderButton("play") }
+          { this._renderProgressBar() }
+          { this._renderPlayButton() } 
+          { this._renderReloadButton() }          
         </div>
     )
   }

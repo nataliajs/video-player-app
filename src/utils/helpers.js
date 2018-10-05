@@ -1,6 +1,8 @@
-export function getPercentage(part, total){
-  if(!part || !total || total===0){
-    return
+export function getPercentage(part, tot){
+  const partial = parseFloat(part);
+  const total = parseFloat(tot);
+  if(!partial || !total){    
+    return 0;
   }
-  return ((part/total)*100).toFixed(2);
+  return parseFloat(((partial/total)*100).toFixed(2));
 };

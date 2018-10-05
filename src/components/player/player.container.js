@@ -83,8 +83,7 @@ class PlayerContainer extends React.Component {
   }
 
   _handleTimeUpdate = () =>{
-    const video = this.videoRef.current;    
-    console.log("currentTime", video.currentTime);
+    const video = this.videoRef.current;
     store.dispatch(getPlayerCurrentTime(video.currentTime));
   }
 
