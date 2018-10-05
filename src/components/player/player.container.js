@@ -3,7 +3,12 @@ import shaka from 'shaka-player'
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import store from "store"
-import { getPlayerCurrentTime, getPlayerDuration, getPlayerSuccess, getPlayerLoading, setIsCurrentTimeUpdated } from "actions/player-actions"
+import { getPlayerCurrentTime, 
+  getPlayerDuration, 
+  getPlayerSuccess, 
+  getPlayerLoading, 
+  setIsCurrentTimeUpdated,
+  resetPlayer } from "actions/player-actions"
 import { WAITING, LOADING } from "utils/network-states"
 
 import Player from "./player"
@@ -16,6 +21,7 @@ class PlayerContainer extends React.Component {
   }
 
   componentDidMount(){    
+    store.dispatch(resetPlayer());
     if(this.props.manifestUri===""){
       return;
     }
@@ -100,6 +106,7 @@ class PlayerContainer extends React.Component {
             <Loading />: "" }
           <Player 
             ref={this.videoRef}
+            isMute={this.props.isMute}
             onLoadedMetaData={this._loadedMetadata}
             onTimeUpdate={this._handleTimeUpdate}/>      
       </div>
@@ -111,7 +118,8 @@ PlayerContainer.propTypes = {
   networkState: PropTypes.string,
   src: PropTypes.string,
   currentTime: PropTypes.number,
-  isPlaying: PropTypes.bool
+  isPlaying: PropTypes.bool,
+  isMute: PropTypes.bool,
 }
 
 PlayerContainer.defaultProps = {
@@ -123,6 +131,7 @@ const mapStateToProps = function(_store) {
     src: _store.moviesState.currentMovie.manifest,
     networkState: _store.playerState.networkState,
     isPlaying: _store.playerState.isPlaying,
+    isMute: _store.playerState.isMute,
     currentTime: _store.playerState.currentTime,
     isCurrentTimeUpdated: _store.playerState.isCurrentTimeUpdated,
   }

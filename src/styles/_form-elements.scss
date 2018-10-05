@@ -1,10 +1,11 @@
 @mixin button() {  
   @include button-text;
   cursor: pointer;
+  background: $c_inverse;
   text-align: center; 
   border: $border-medium;
   margin: $m_medium;
-  padding: $m_medium;
+  position: relative;
   &:hover{
     background: $c_main;
     font-weight: $fw_regular;
@@ -14,6 +15,7 @@
 @mixin control-btn() {  
   @include button-text;
   cursor: pointer;
+  background: $c_inverse;
   text-align: center; 
   border-right: $border-medium;
   padding: $m_medium $m_large;

@@ -6,6 +6,8 @@ const initialState = {
   networkError: null,
   duration: 0,
   currentTime: 0,
+  isPlaying: false,
+  isMute: false,
   isCurrentTimeUpdated: false
 };
 
@@ -50,12 +52,21 @@ export default function(state = initialState, action){
         isPlaying: action.isPlaying,
       }
 
+    case types.SET_MUTE:
+      return {
+        ...state,
+        isMute: action.isMute,
+      }
+
     // we control time updates that come from input events
     case types.SET_IS_CURRENT_TIME_UPDATED:
       return {
         ...state,
         isCurrentTimeUpdated: action.isCurrentTimeUpdated,
       }
+
+    case types.RESET_PLAYER:
+      return initialState
 
     default:
       return state 

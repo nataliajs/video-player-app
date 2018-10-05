@@ -1,6 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setIsPlaying, setIsCurrentTimeUpdated, getPlayerCurrentTime } from "actions/player-actions"
+import { setIsPlaying, 
+  setIsCurrentTimeUpdated, 
+  getPlayerCurrentTime,
+  setMute } from "actions/player-actions"
 import store from "store"
 import { connect } from "react-redux"
 import { getPercentage } from "utils/helpers"
@@ -11,6 +14,10 @@ class PlayerControlsContainer extends React.Component {
 
   _handleTogglePlay = event =>{
     store.dispatch(setIsPlaying(!this.props.isPlaying));
+  }
+
+  _handleToggleMute = event => {
+    store.dispatch(setMute(!this.props.isMute));
   }
 
   _handleReload = event =>{
@@ -25,6 +32,7 @@ class PlayerControlsContainer extends React.Component {
     const newTimePosition = parseFloat((playedRatio*this.props.duration).toFixed(2));
     store.dispatch(getPlayerCurrentTime(newTimePosition));
     store.dispatch(setIsCurrentTimeUpdated(true));
+    store.dispatch(setIsPlaying(true));
   }
 
   render() {
@@ -35,7 +43,9 @@ class PlayerControlsContainer extends React.Component {
             handleTogglePlay={this._handleTogglePlay}
             handleReload={this._handleReload}
             handleClickProgressBar={this._handleClickProgressBar}
+            handleToggleMute={this._handleToggleMute}
             isPlaying={this.props.isPlaying}
+            isMute={this.props.isMute}
             percentage={playedPercentage}
           />
         </div>
@@ -45,11 +55,18 @@ class PlayerControlsContainer extends React.Component {
 
 PlayerControlsContainer.propTypes = {
   isPlaying: PropTypes.bool,
+  isMute: PropTypes.bool,
+}
+
+PlayerControlsContainer.defaultProps = {
+  isMute: false,
+  isPlaying: false
 }
 
 const mapStateToProps = function(_store) {
   return {
     isPlaying: _store.playerState.isPlaying,
+    isMute: _store.playerState.isMute,
     duration: _store.playerState.duration,
     currentTime: _store.playerState.currentTime,
   }

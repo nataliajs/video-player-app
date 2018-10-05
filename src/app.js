@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import MoviesListContainer from "components/movies-list/movies-list.container"
 import MovieContainer from "components/movie/movie.container"
@@ -7,7 +8,7 @@ import MovieContainer from "components/movie/movie.container"
 const MainLayout = () => (
   <div className="main-layout">
     <header className="Header">
-      <span className="Header__first" />
+      <Link to="/" className="Header__first"/>
       <div className="Header__content">
       <div className="Header__content__text">video app</div>
       </div>

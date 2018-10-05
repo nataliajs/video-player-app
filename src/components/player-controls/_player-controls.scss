@@ -1,5 +1,10 @@
 .PlayerControls{
-  border: $border-large;
+  border-bottom: $border-large;
+  //border-bottom: $border-large;
+  @media screen and (min-width: $beta_query) {
+    border: $border-large;
+    border-top: none;
+  }
   border-top: 0;
   &__btn{
     @include control-btn;

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faRedoAlt, faVolumeOff, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 
 class PlayerControls extends React.Component {
   _renderPlayButton = ()=>{
@@ -23,6 +23,17 @@ class PlayerControls extends React.Component {
     )
   }
 
+  _renderMuteButton = ()=>{
+    return(
+      <button type="button" onClick={this.props.handleToggleMute} className="PlayerControls__btn">
+          {this.props.isMute? 
+          <FontAwesomeIcon icon={faVolumeUp} />
+          :<FontAwesomeIcon icon={faVolumeOff} />
+        } 
+      </button>
+    )
+  }
+
   _renderProgressBar = ()=>{
     return(
       <div id="video-progress-bar" onClick={this.props.handleClickProgressBar} className="PlayerControls__progress-bar">
@@ -39,7 +50,8 @@ class PlayerControls extends React.Component {
         <div className="PlayerControls">
           { this._renderProgressBar() }
           { this._renderPlayButton() } 
-          { this._renderReloadButton() }          
+          { this._renderReloadButton() }   
+          { this._renderMuteButton() }       
         </div>
     )
   }
@@ -49,8 +61,15 @@ PlayerControls.propTypes = {
   handleTogglePlay: PropTypes.func,
   handleReload: PropTypes.func,
   handleClickProgressBar: PropTypes.func,
+  handleToggleMute: PropTypes.func,
   percentage: PropTypes.number,
-  isPlaying: PropTypes.bool
+  isPlaying: PropTypes.bool,
+  isMute: PropTypes.bool,
+}
+
+PlayerControls.defaultProps = {
+  isMute: false,
+  isPlaying: false
 }
 
 export default PlayerControls

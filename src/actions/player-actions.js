@@ -41,9 +41,21 @@ export function setIsPlaying(isPlaying) {
   }
 }
 
+export function setMute(isMute) {
+  return {
+    type: types.SET_MUTE,
+    isMute
+  }
+}
 export function setIsCurrentTimeUpdated(isCurrentTimeUpdated) {  
   return {
     type: types.SET_IS_CURRENT_TIME_UPDATED,
     isCurrentTimeUpdated
+  }
+}
+
+export function resetPlayer() {  
+  return {
+    type: types.RESET_PLAYER
   }
 }

@@ -1,3 +1,13 @@
 .Player{
-  border: $border-large;
+  box-sizing: border-box;
+  border-bottom: $border-large;
+  border-top: $border-large;
+  width: 100%;
+  @media screen and (min-width: $beta_query) {
+    border: $border-large;
+  }
+  &__video{
+    top: $b-large_width;
+    width: 100%;
+  }
 }

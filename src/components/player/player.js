@@ -4,11 +4,12 @@ import PropTypes from "prop-types"
 const Player = React.forwardRef((props, ref) => (
   <div className="Player">
     <video 
+      className="Player__video"
       ref={ref}
-      width="640"
       poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
       onLoadedMetadata={props.onLoadedMetaData}
       onTimeUpdate={props.onTimeUpdate}
+      muted={props.isMute}
       /> 
     </div>
   )

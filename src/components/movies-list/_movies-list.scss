@@ -4,7 +4,8 @@
     &__item{
       @include button;
       a{
-        width: 100%;
+        display: block;
+        padding: $m_medium;
       }
     }
     width: 100%;

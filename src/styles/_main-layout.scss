@@ -11,6 +11,8 @@ a {
   color: $c_font; 
 }
 button{
+  border-color: transparent;
+  border-width: 0px;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -24,19 +26,23 @@ button:active {
 }
 
 .main-layout{
+  position: relative;
   box-sizing: border-box;
-  width: 100vw;
   min-height: 100vh;  
   border: $border-large;
   .Header{
-    height: 100px;
+    height: $h_header;
     border-bottom: $border-large;  
     display: flex;
     &__first{
+      z-index: 2;
       height: 100%;
-      width: 22%;
+      width: 20.5%;
       @media screen and (min-width: $beta_query) {
-        width: 21%;
+        width: 20.5%;
+      }
+      @media screen and (min-width: $charlie_query) {
+        width: 20%;
       }
       background: $c_secondary;
     }
@@ -54,19 +60,23 @@ button:active {
       }
     }
   }
-  main{
-    margin-left: 20%;
+  main{    
     max-width: $max_width_content;
-    padding: $m_medium $m_medium $m_medium $m_large;
+    //padding: $m_medium;
     @media screen and (min-width: $beta_query) {
+      margin-left: 20%;
       padding: $m_large $m_large $m_large $m_large+20px;
     }
   }
   &__vertical-col{
+    height: $h_header;
+    @media screen and (min-width: $beta_query) {
+      height: auto;
+      bottom: 0;
+    }
     position: absolute;
-    top: 0;
+    top: 0;    
     width: 20%;
-    height: 100%;
     border-right: $border-large;
   }
 }

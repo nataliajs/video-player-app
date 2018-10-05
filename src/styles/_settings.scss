@@ -45,8 +45,9 @@ $c_font: $c_base;
 /**
 * BORDERS
 **/
+$b-large_width: 10px;
 $border-medium: 6px solid $c_base;
-$border-large: 10px solid $c_base;
+$border-large: $b-large_width solid $c_base;
 
 /**
  * MARGINS
@@ -56,7 +57,8 @@ $m_medium: 16px;
 $m_large: 32px;
 
 
-$max_width_content: 990px;
+$max_width_content: 900px;
+$h_header: 100px;
 
 /*
 *
@@ -77,12 +79,13 @@ $max_width_content: 990px;
 @mixin heading($style: bold) {
   font-size: $s_large;
   line-height: $lh_medium;
-  @if $style == 'bold' {
-    font-family: $ff_heading;
+  font-family: $ff_heading;
+  font-weight: $fw_extra-bold;
+  @if $style == 'medium' {    
+    font-weight: $fw_bold;
   }
   margin: $m_medium 0;
-  color: $c_font;
-  font-weight: $fw_extra-bold;
+  color: $c_font;  
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -108,8 +111,6 @@ $beta_screen: 768;
 $charlie_screen: 1024;
 $delta_screen: 1200; 
 $echo_screen: 1980;
-$max_width: 980;
-$containerwidth: $max_width + 0px;
 
 $beta_query: $beta_screen + 0px;
 $charlie_query: $charlie_screen + 0px;
