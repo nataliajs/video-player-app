@@ -4,8 +4,9 @@ import * as types from '../actions/action-types'
 const initialState = {
   networkState: WAITING,
   networkError: null,
-  player: {},
-  currentTime: 0
+  duration: 0,
+  currentTime: 0,
+  play: false
 };
 
 export default function(state = initialState, action){
@@ -14,6 +15,18 @@ export default function(state = initialState, action){
       return {
         ...state,
         currentTime: action.currentTime,
+      }
+
+    case types.GET_PLAYER_DURATION:
+      return {
+        ...state,
+        duration: action.duration,
+      }
+
+    case types.GET_PLAYER_SUCCESS:
+      return {
+        ...state,
+        networkError: null,
         networkState: SUCCESS,
       }
 
@@ -30,6 +43,13 @@ export default function(state = initialState, action){
         networkState: LOADING,
         networkError: null,
       }
+    
+    case types.SET_PLAY:
+      return {
+        ...state,
+        play: action.play,
+      }
+
     default:
       return state 
   }

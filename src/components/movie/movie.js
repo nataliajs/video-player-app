@@ -2,6 +2,7 @@ import React from "react"
 import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
 
 import PlayerContainer from "components/player/player.container"
+import PlayerControlsContainer from "components/player-controls/player-controls.container"
 
 class Movie extends React.Component {
   render() {
@@ -9,7 +10,9 @@ class Movie extends React.Component {
       <div className="Movie">
         <div className="Movie__title">{ this.props.movie.name }</div>
         <div className="Movie__player">
-          <PlayerContainer manifestUri={ this.props.movie.manifest }/>
+          <PlayerContainer />
+          <PlayerControlsContainer
+            />
         </div>          
       </div>
     )

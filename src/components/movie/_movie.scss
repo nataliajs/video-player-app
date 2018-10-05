@@ -1,0 +1,6 @@
+.Movie{
+  //position: relative;
+  &__title{
+    @include heading;
+  }
+}

@@ -1,26 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import PlayerControlsContainer from "components/player-controls/player-controls.container"
-
-class Player extends React.Component {
-  render() {
-    return(
-        <div className="Player">
-          <video 
-            id="video"
-            ref="video"
-            width="640"
-            poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
-            loadedmetadata={this.props.onLoadedMetaData}
-          />
-            <PlayerControlsContainer 
-              {...this.props}
-          />
-        </div>
-    )
-  }
-}
+const Player = React.forwardRef((props, ref) => (
+  <div className="Player">
+    <video 
+      ref={ref}
+      width="640"
+      poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
+      onLoadedMetadata={props.onLoadedMetaData}
+      onTimeUpdate={props.onTimeUpdate}
+      //autoPlay
+      /> 
+    </div>
+  )
+)
 
 Player.propTypes = {
   currentTime: PropTypes.number,

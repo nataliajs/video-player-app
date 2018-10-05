@@ -14,7 +14,7 @@ a {
 .main-layout{
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;  
+  min-height: 100vh;  
   border: $border-large;
   .Header{
     height: 100px;
@@ -28,7 +28,7 @@ a {
       }
       background: $c_secondary;
     }
-    &__content{
+    &__content{      
       position: relative;
       height: 100%;
       width: 80%;
@@ -44,6 +44,7 @@ a {
   }
   main{
     margin-left: 20%;
+    max-width: $max_width_content;
     padding: $m_medium $m_medium $m_medium $m_large;
     @media screen and (min-width: $beta_query) {
       padding: $m_large $m_large $m_large $m_large+20px;

@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import store from "store"
 import { getMovie } from "actions/movies-actions"
+
 import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
 import { WAITING, LOADING } from "utils/network-states"
 
@@ -14,12 +15,15 @@ class MovieContainer extends React.Component {
     store.dispatch(getMovie(this.props.match.params.movieId));
   }
 
+
+
   render() {
     return(
         <div>
           { this.props.networkState === WAITING || this.props.networkState === LOADING ?
             <Loading />
-            : <Movie {...this.props} />
+            : <Movie 
+                movie={this.props.movie} />
           }
         </div>
     )

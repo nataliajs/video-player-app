@@ -3,4 +3,12 @@
   &__btn{
     @include control-btn;
   }
+  &__progress-bar{
+    position: relative;
+    height: 20px;
+    width: 100%;
+    &__fill{
+      color: $c_main;
+    }
+  }
 }
